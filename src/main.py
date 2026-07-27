@@ -3,6 +3,8 @@ from alerts import send_slack_alert
 import json, os
 import logging
 
+os.makedirs("logs", exist_ok=True)
+
 logging.basicConfig(
     filename="logs/uptime.log", level=logging.INFO,
     format="%(asctime)s %(levelname)s %(message)s"
@@ -21,7 +23,6 @@ def save_state(state):
     json.dump(state, open(STATE_FILE, "w"))
 
 def main():
-    os.makedirs("logs", exist_ok=True)
     results = run_checks()
     state = load_state()
 
@@ -46,5 +47,5 @@ def main():
     save_state(state)
     print(json.dumps(results, indent=2))
 
-if __name__ == "__main__":
+if name == "__main__":
     main()
