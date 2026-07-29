@@ -18,6 +18,7 @@ Outages often go unnoticed until a user complains. This bot continuously checks 
 
 ## Architecture
 
+![Architecture Diagram](docs/architecture.svg)
 GitHub Actions (cron, every 10 min) │ ▼ checkout code → install deps → restore cached state │ ▼ src/main.py ├── checker.py → HTTP GET each target → UP/DOWN + latency ├── (state.json)→ tracks consecutive failures per target └── alerts.py → POST to Slack Incoming Webhook (on threshold breach / recovery) │ ▼ save state to cache for next run │ ▼ logs/uptime.log (structured, timestamped)
 ## Tech stack
 
