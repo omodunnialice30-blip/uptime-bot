@@ -1,7 +1,9 @@
+```groovy
 pipeline {
     agent any
 
     stages {
+
         stage('Checkout') {
             steps {
                 echo 'Checking out code...'
@@ -12,7 +14,7 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 echo 'Installing Python dependencies...'
-                sh 'pip3 install -r requirements.txt --break-system-packages'
+                sh 'pip3 install --break-system-packages -r requirements.txt'
             }
         }
 
@@ -31,3 +33,4 @@ pipeline {
         }
     }
 }
+```
