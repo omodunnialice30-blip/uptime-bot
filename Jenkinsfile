@@ -1,3 +1,4 @@
+// Testing multibranch pipeline detection
 pipeline {
     agent any
 
