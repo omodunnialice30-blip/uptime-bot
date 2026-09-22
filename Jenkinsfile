@@ -30,7 +30,9 @@ pipeline {
         stage('Docker Run') {
             steps {
                 echo 'Running the container...'
-                sh 'docker run --rm uptime-bot:latest'
+                withCredentials([string(credentialsId: 'slack-webhook-url', variable: 'SLACK_WEBHOOK_URL')]) {
+                    sh 'docker run --rm -e SLACK_WEBHOOK_URL="$SLACK_WEBHOOK_URL" uptime-bot:latest'
+                }
             }
         }
     }
