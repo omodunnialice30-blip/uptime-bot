@@ -1,11 +1,7 @@
-pipeline {
-    agent any
-
 // Testing multibranch pipeline detection
 pipeline {
     agent any
-    
-}
+
     stages {
         stage('Checkout') {
             steps {
